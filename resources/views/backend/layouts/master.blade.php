@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>@yield('title')</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="{{ 'assets/backend/assets/backend/assets/img/icon.ico' }}" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="{{ url('assets/backend/assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular",
+                    "Font Awesome 5 Brands", "simple-line-icons"
+                ],
+                urls: ['assets/backend/assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ url('assets/backend/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/backend/assets/css/atlantis.min.css') }}">
+    {{--
+    <link rel="stylesheet" href="{{ url('assets/backend/assets/css/pdf.css') }}"> --}}
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="{{ url('assets/backend/assets/css/demo.css') }}">
+    @livewireStyles
+    @stack('css')
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="purple2">
+                <a href="index.html" class="logo">
+                    <img src="assets/backend/assets/img/logo_rg.png" width="108" alt="navbar brand"
+                        class="navbar-brand ml-5">
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            @include('backend.layouts.navbar')
+
+        </div>
+
+        @include('backend.layouts.sidebar')
+
+        <div class="main-panel">
+            @yield('content')
+            @include('backend.layouts.footer')
+        </div>
+    </div>
+    <!--   Core JS Files   -->
+    <script src="{{ url('assets/backend/assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="{{ url('assets/backend/assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ url('assets/backend/assets/js/core/bootstrap.min.js') }}"></script>
+
+    <!-- jQuery UI -->
+    <script src="{{ url('assets/backend/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+    <script src="{{ url('assets/backend/assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}">
+    </script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="{{ url('assets/backend/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
+
+    <!-- Chart JS -->
+    <script src="{{ url('assets/backend/assets/js/plugin/chart.js/chart.min.js') }}"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="{{ url('assets/backend/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+
+    <!-- Chart Circle -->
+    <script src="{{ url('assets/backend/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
+
+    <!-- Datatables -->
+    <script src="{{ url('assets/backend/assets/js/plugin/datatables/datatables.min.js') }}"></script>
+
+
+    <!-- jQuery Vector Maps -->
+    <script src="{{ url('assets/backend/assets/js/plugin/jqvmap/jquery.vmap.min.js') }}"></script>
+    <script src="{{ url('assets/backend/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js') }}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{{ url('assets/backend/assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+
+    <!-- Atlantis JS -->
+    <script src="{{ url('assets/backend/assets/js/atlantis.min.js') }}"></script>
+
+    <!-- Atlantis DEMO methods, don't include it in your project! -->
+    <script src="{{ url('assets/backend/assets/js/setting-demo.js') }}"></script>
+
+    @livewireScripts
+
+    {{-- insert --}}
+    <script>
+        window.addEventListener('closeModal', event => {
+            $("#insertModal").modal('hide');
+            location.reload(); 
+        })
+        window.addEventListener('openModal', event => {
+            $("#insertModal").modal('show');
+        })
+
+    </script>
+
+    {{-- edit --}}
+    <script>
+        window.addEventListener('closeEditModal', event => {
+            $("#editModal").modal('hide');
+        })
+        window.addEventListener('openEditModal', event => {
+            $("#editModal").modal('show');
+        })
+
+        // detail
+        window.addEventListener('closeDetailModal', event => {
+            $("#detailModal").modal('hide');
+        })
+        window.addEventListener('openDetailModal', event => {
+            $("#detailModal").modal('show');
+        })
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        window.addEventListener('swal', function(e) {
+            Swal.fire(e.detail);
+        });
+
+    </script>
+    <script>
+        document.addEventListener('livewire:load', function() {
+            $('#basic-datatables').DataTable({});
+        })
+    </script>
+    @stack('js')
+</body>
+
+</html>

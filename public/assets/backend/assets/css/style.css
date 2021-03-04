@@ -1,0 +1,56 @@
+body{
+ font-family: 'Montserrat', sans-serif;
+}
+
+.navbar{
+    background-color: rgb(39, 39, 39);
+}
+.nav-link{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.footer{
+    height: 350px;
+    background-color: rgb(39, 39, 39);
+}
+
+.float-button {
+    text-decoration: none;
+    position: fixed;
+    /* padding: 10px; */
+    width: 50px;
+    height: 50px;
+    padding-top: 13px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #50c65e;
+    color: rgb(165, 165, 165);
+    border-radius: 100%;
+    text-align: center;
+    box-shadow: 1px 4px 6px 0px rgb(112, 112, 112);
+    z-index: 100;
+    font-family: arial;
+    animation: whatsapp-animation 0.5s ease-in-out;
+    transition: background-color 0.3s ease;
+}
+
+.float-button:hover {
+    background-color: #90d573;
+}
+
+@keyframes whatsapp-animation {
+    from {opacity: 0%;}
+    to {opacity: 100%}
+}
+
+@media screen and (max-width: 545px) {
+    span {
+        display: none;
+    }
+    .float-button {
+        width: 30px;
+        border-radius: 10px;
+        height: 30px;
+    }
+}
